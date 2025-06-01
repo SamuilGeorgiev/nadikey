@@ -25,7 +25,7 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            padding: 10px 0;
+            padding: 5px 0; /* Намалена височина */
             backdrop-filter: blur(5px);
         }
 
@@ -40,7 +40,7 @@
 
         .navbar .logo {
             font-family: 'Roboto', sans-serif;
-            font-size: 1.8em;
+            font-size: 1.5em; /* Намалена величина на лого */
             font-weight: 700;
             color: #fff;
         }
@@ -49,17 +49,18 @@
             display: flex;
             align-items: center;
             background-color: rgba(255, 255, 255, 0.9);
-            border-radius: 20px;
-            padding: 5px 15px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            border-radius: 15px; /* По-малък радиус */
+            padding: 2px 10px; /* Намалено подплън */
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); /* По-лек сенник */
         }
 
         .nav-menu a {
             color: #2c3e50;
             text-decoration: none;
-            padding: 10px 15px;
+            padding: 8px 12px; /* Намалени вътрешни отстъпи */
             font-weight: 600;
             transition: color 0.3s;
+            font-size: 0.9em; /* По-малък шрифт */
         }
 
         .nav-menu a:hover {
@@ -68,10 +69,10 @@
 
         .hamburger {
             display: none;
-            font-size: 1.8em;
+            font-size: 1.5em; /* Намалена големина */
             color: #fff;
             cursor: pointer;
-            padding: 10px;
+            padding: 5px;
         }
 
         .hero {
@@ -239,6 +240,7 @@
             display: flex;
             white-space: nowrap;
             animation: slide 30s linear infinite;
+            touch-action: pan-x; /* Позволява хоризонтално плъзгане с пръст */
         }
 
         .carousel-row.top {
@@ -362,17 +364,21 @@
                 display: block;
             }
 
+            .navbar {
+                padding: 3px 0; /* По-тънка горна лента */
+            }
+
             .nav-menu {
                 display: none;
                 flex-direction: column;
                 width: 100%;
                 position: absolute;
-                top: 60px;
+                top: 40px; /* Намалена височина на горната част */
                 left: 0;
                 background-color: rgba(255, 255, 255, 0.9);
-                border-radius: 20px;
-                padding: 15px;
-                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+                border-radius: 15px;
+                padding: 5px;
+                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
             }
 
             .nav-menu.active {
@@ -381,10 +387,11 @@
             }
 
             .nav-menu a {
-                margin: 10px 0;
-                padding: 10px;
+                margin: 5px 0;
+                padding: 6px;
                 text-align: center;
                 width: 100%;
+                font-size: 0.8em; /* По-малък шрифт на мобилен */
             }
 
             .hero h1 {
@@ -608,6 +615,34 @@
             } else {
                 backToTop.style.display = 'none';
             }
+        });
+
+        // Добавяне на плъзгане с пръст за галерията
+        const carouselRows = document.querySelectorAll('.carousel-row');
+        carouselRows.forEach(row => {
+            let isDragging = false;
+            let startX;
+            let scrollLeft;
+
+            row.addEventListener('touchstart', (e) => {
+                isDragging = true;
+                startX = e.touches[0].pageX - row.offsetLeft;
+                scrollLeft = row.scrollLeft;
+                row.style.animationPlayState = 'paused'; // Спира анимацията при започване на плъзгане
+            });
+
+            row.addEventListener('touchmove', (e) => {
+                if (!isDragging) return;
+                e.preventDefault();
+                const x = e.touches[0].pageX - row.offsetLeft;
+                const walk = (x - startX) * 1.5; // Скорост на плъзгане
+                row.scrollLeft = scrollLeft - walk;
+            });
+
+            row.addEventListener('touchend', () => {
+                isDragging = false;
+                row.style.animationPlayState = 'running'; // Възстановява анимацията след спиране
+            });
         });
     </script>
 </body>
