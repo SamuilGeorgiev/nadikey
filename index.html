@@ -25,7 +25,7 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            padding: 5px 0; /* Намалена височина */
+            padding: 5px 0;
             backdrop-filter: blur(5px);
         }
 
@@ -40,7 +40,7 @@
 
         .navbar .logo {
             font-family: 'Roboto', sans-serif;
-            font-size: 1.5em; /* Намалена величина на лого */
+            font-size: 1.5em;
             font-weight: 700;
             color: #fff;
         }
@@ -49,18 +49,18 @@
             display: flex;
             align-items: center;
             background-color: rgba(255, 255, 255, 0.9);
-            border-radius: 15px; /* По-малък радиус */
-            padding: 2px 10px; /* Намалено подплън */
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); /* По-лек сенник */
+            border-radius: 15px;
+            padding: 2px 10px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
         }
 
         .nav-menu a {
             color: #2c3e50;
             text-decoration: none;
-            padding: 8px 12px; /* Намалени вътрешни отстъпи */
+            padding: 8px 12px;
             font-weight: 600;
             transition: color 0.3s;
-            font-size: 0.9em; /* По-малък шрифт */
+            font-size: 0.9em;
         }
 
         .nav-menu a:hover {
@@ -69,7 +69,7 @@
 
         .hamburger {
             display: none;
-            font-size: 1.5em; /* Намалена големина */
+            font-size: 1.5em;
             color: #fff;
             cursor: pointer;
             padding: 5px;
@@ -240,7 +240,7 @@
             display: flex;
             white-space: nowrap;
             animation: slide 30s linear infinite;
-            touch-action: pan-x; /* Позволява хоризонтално плъзгане с пръст */
+            touch-action: pan-x;
         }
 
         .carousel-row.top {
@@ -270,6 +270,7 @@
             border: 3px solid #27ae60;
             transition: transform 0.3s, box-shadow 0.3s;
             display: block;
+            cursor: pointer;
         }
 
         .carousel-item img:hover {
@@ -330,6 +331,19 @@
             color: #c0392b;
         }
 
+        .map-container {
+            max-width: 800px;
+            margin: 20px auto;
+            height: 400px;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            border-radius: 10px;
+        }
+
         .back-to-top {
             position: fixed;
             bottom: 20px;
@@ -349,6 +363,36 @@
             transform: scale(1.1);
         }
 
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90vh;
+            object-fit: contain;
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: #fff;
+            font-size: 2em;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
@@ -365,7 +409,7 @@
             }
 
             .navbar {
-                padding: 3px 0; /* По-тънка горна лента */
+                padding: 3px 0;
             }
 
             .nav-menu {
@@ -373,7 +417,7 @@
                 flex-direction: column;
                 width: 100%;
                 position: absolute;
-                top: 40px; /* Намалена височина на горната част */
+                top: 40px;
                 left: 0;
                 background-color: rgba(255, 255, 255, 0.9);
                 border-radius: 15px;
@@ -391,7 +435,7 @@
                 padding: 6px;
                 text-align: center;
                 width: 100%;
-                font-size: 0.8em; /* По-малък шрифт на мобилен */
+                font-size: 0.8em;
             }
 
             .hero h1 {
@@ -413,6 +457,10 @@
 
             .info-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .map-container {
+                height: 300px;
             }
         }
 
@@ -437,6 +485,10 @@
 
             .carousel-item img {
                 height: 80px;
+            }
+
+            .map-container {
+                height: 250px;
             }
         }
 
@@ -536,6 +588,7 @@
                 <div class="carousel-item"><img src="15.jpg" alt="Gallery Image 10"></div>
                 <div class="carousel-item"><img src="17.jpg" alt="Gallery Image 11"></div>
                 <div class="carousel-item"><img src="33.jpg" alt="Gallery Image 12"></div>
+
             </div>
             <div class="carousel-row bottom">
                 <div class="carousel-item"><img src="44.jpg" alt="Gallery Image 13"></div>
@@ -550,6 +603,10 @@
                 <div class="carousel-item"><img src="555.jpg" alt="Gallery Image 22"></div>
                 <div class="carousel-item"><img src="666.jpg" alt="Gallery Image 23"></div>
                 <div class="carousel-item"><img src="888.jpg" alt="Gallery Image 24"></div>
+                <div class="carousel-item"><img src="12.jpg" alt="Gallery Image 25"></div>
+                <div class="carousel-item"><img src="23.jpg" alt="Gallery Image 26"></div>
+                <div class="carousel-item"><img src="45.jpg" alt="Gallery Image 27"></div>
+                <div class="carousel-item"><img src="47.jpg" alt="Gallery Image 28"></div>
             </div>
         </div>
     </section>
@@ -574,9 +631,17 @@
             <p>Събота: Затворено</p>
             <p>Неделя: Затворено</p>
         </div>
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2942.3852074063957!2d26.501379311646943!3d42.48336262718242!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40a6351af778254b%3A0xade2e45cac8904f8!2zTmFkaUtleSDQkNCy0YLQvtC60LvRjtGH0LDRgNGB0LrQuCDQuCDQutC70Y7Rh9Cw0YDRgdC60Lgg0YPRgdC70YPQs9C4!5e0!3m2!1sbg!2sbg!4v1748857299930!5m2!1sbg!2sbg" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
     </section>
 
     <a href="#home" class="back-to-top" title="Върни се нагоре">⇧</a>
+
+    <div id="imageModal" class="modal">
+        <span class="close">×</span>
+        <img id="modalImage" class="modal-content" src="">
+    </div>
 
     <script type="text/javascript">
         const hamburger = document.querySelector('.hamburger');
@@ -617,7 +682,6 @@
             }
         });
 
-        // Добавяне на плъзгане с пръст за галерията
         const carouselRows = document.querySelectorAll('.carousel-row');
         carouselRows.forEach(row => {
             let isDragging = false;
@@ -628,21 +692,59 @@
                 isDragging = true;
                 startX = e.touches[0].pageX - row.offsetLeft;
                 scrollLeft = row.scrollLeft;
-                row.style.animationPlayState = 'paused'; // Спира анимацията при започване на плъзгане
+                row.style.animationPlayState = 'paused';
             });
 
             row.addEventListener('touchmove', (e) => {
                 if (!isDragging) return;
                 e.preventDefault();
                 const x = e.touches[0].pageX - row.offsetLeft;
-                const walk = (x - startX) * 1.5; // Скорост на плъзгане
+                const walk = (x - startX) * 1.5;
                 row.scrollLeft = scrollLeft - walk;
             });
 
             row.addEventListener('touchend', () => {
                 isDragging = false;
-                row.style.animationPlayState = 'running'; // Възстановява анимацията след спиране
+                row.style.animationPlayState = 'running';
             });
+        });
+
+        const modal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+        const closeModal = document.querySelector('.close');
+        const images = document.querySelectorAll('.carousel-item img');
+
+        images.forEach(image => {
+            image.addEventListener('click', () => {
+                modal.style.display = 'flex';
+                modalImage.src = image.src;
+                modalImage.alt = image.alt;
+                carouselRows.forEach(row => {
+                    row.style.animationPlayState = 'paused';
+                });
+            });
+        });
+
+        const resumeCarousel = () => {
+            modal.style.display = 'none';
+            carouselRows.forEach(row => {
+                row.style.animation = 'none'; // Рестартира анимацията
+                row.offsetHeight; // Този трик форсира рестарт
+                row.style.animation = 'slide 30s linear infinite';
+                if (row.classList.contains('top')) {
+                    row.style.animationDirection = 'normal';
+                } else if (row.classList.contains('bottom')) {
+                    row.style.animationDirection = 'reverse';
+                }
+            });
+        };
+
+        closeModal.addEventListener('click', resumeCarousel);
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                resumeCarousel();
+            }
         });
     </script>
 </body>
