@@ -7,6 +7,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        /* ================================================================ */
+        /* EXISTING CSS (NO CHANGES HERE FOR NOW, BUT REVIEW THE HERO SECTION) */
+        /* ================================================================ */
         * {
             margin: 0;
             padding: 0;
@@ -21,6 +24,14 @@
             background-size: 100% 100%;
             animation: bgFade 15s infinite ease-in-out;
         }
+
+        /* Add a class for when the body scroll is locked */
+        body.no-scroll {
+            overflow: hidden;
+            /* Consider if you need to adjust fixed elements here for scrollbar width */
+            padding-right: var(--scrollbar-width, 0px); /* Will be set by JS */
+        }
+
 
         @keyframes bgFade {
             0% { background-position: 0% 0%; }
@@ -51,7 +62,7 @@
             font-family: 'Roboto', sans-serif;
             font-size: 1.5em;
             font-weight: 700;
-            color: #ffffff;
+            color: #FF0000; /* Changed to red */
             text-shadow: 0 0 5px #00966e;
         }
 
@@ -164,6 +175,13 @@
             margin-bottom: 20px;
             text-shadow: 0 0 10px #ffffff;
         }
+
+        /* Ensure the span in hero h1 also has appropriate styling for visibility */
+        .hero h1 span {
+            /* Inherits color from the inline style, but you might want to add text-shadow if it disappears */
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Example: Add a darker shadow for contrast */
+        }
+
 
         .hero p {
             font-size: 1.2em;
@@ -640,6 +658,10 @@
             z-index: 2000;
             justify-content: center;
             align-items: center;
+            /* Ensure modal content takes full height when opened */
+            /* This is important for iOS to properly manage scroll and clicks */
+            -webkit-overflow-scrolling: touch; /* For smoother scrolling within modal on iOS */
+            overflow-y: auto; /* Allow scrolling if image is too big */
         }
 
         .modal-content {
@@ -967,7 +989,7 @@
 
     <section id="home" class="hero">
         <div class="hero-content">
-            <h1>NadiKey - Вашият надежден ключар в Ямбол</h1>
+            <h1><span style="color: #FF0000;">NadiKey</span> - Вашият надежден ключар в Ямбол</h1>
             <p>Доверен партньор за бързи и професионални ключарски услуги!</p>
             <a href="#contact" class="cta-button">Свържете се с нас</a>
         </div>
@@ -1177,7 +1199,8 @@
             const elements = document.querySelectorAll('.services, .gallery, .about, .contact, .info-sections, .faq');
             elements.forEach(element => {
                 const rect = element.getBoundingClientRect();
-                if (rect.top <= window.innerHeight * 0.8) {
+                // Only animate if the element is not already visible and within the viewport
+                if (rect.top <= window.innerHeight * 0.8 && element.style.opacity !== '1') {
                     element.style.opacity = '1';
                     element.style.transform = 'translateY(0)';
                 }
@@ -1185,6 +1208,9 @@
         };
 
         window.addEventListener('scroll', animateOnScroll);
+        // Run once on load to animate already visible elements
+        document.addEventListener('DOMContentLoaded', animateOnScroll);
+
 
         const backToTop = document.querySelector('.back-to-top');
         window.addEventListener('scroll', () => {
@@ -1201,16 +1227,29 @@
             let startX;
             let scrollLeft;
 
+            const startAnimation = () => {
+                row.style.animation = 'slide 30s linear infinite';
+                if (row.classList.contains('top')) {
+                    row.style.animationDirection = 'normal';
+                } else if (row.classList.contains('bottom')) {
+                    row.style.animationDirection = 'reverse';
+                }
+            };
+
+            const stopAnimation = () => {
+                row.style.animationPlayState = 'paused';
+            };
+
             row.addEventListener('touchstart', (e) => {
                 isDragging = true;
                 startX = e.touches[0].pageX - row.offsetLeft;
                 scrollLeft = row.scrollLeft;
-                row.style.animationPlayState = 'paused';
+                stopAnimation(); // Pause animation on touch start
             });
 
             row.addEventListener('touchmove', (e) => {
                 if (!isDragging) return;
-                e.preventDefault();
+                e.preventDefault(); // Prevent default scroll behavior
                 const x = e.touches[0].pageX - row.offsetLeft;
                 const walk = (x - startX) * 1.5;
                 row.scrollLeft = scrollLeft - walk;
@@ -1218,7 +1257,17 @@
 
             row.addEventListener('touchend', () => {
                 isDragging = false;
-                row.style.animationPlayState = 'running';
+                startAnimation(); // Resume animation on touch end
+            });
+
+            row.addEventListener('mouseleave', () => { // Add mouseleave for desktop
+                if (!isDragging) {
+                    startAnimation();
+                }
+            });
+
+            row.addEventListener('mouseenter', () => { // Add mouseenter for desktop
+                stopAnimation();
             });
         });
 
@@ -1229,9 +1278,39 @@
         const nextButton = document.querySelector('.next');
         const images = document.querySelectorAll('.carousel-item img, .about-gallery img');
         let currentImageIndex = 0;
+        let lastScrollY = 0; // To store scroll position
+
+        // Function to lock body scroll
+        function lockBodyScroll() {
+            lastScrollY = window.scrollY; // Save current scroll position
+            document.body.style.position = 'fixed';
+            document.body.style.top = `-${lastScrollY}px`;
+            document.body.style.width = '100%';
+            document.body.style.overflowY = 'scroll'; // Allow scrollbar to remain so no jump
+            // Calculate scrollbar width and apply padding to prevent content jump
+            const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+            document.body.style.paddingRight = `${scrollbarWidth}px`;
+            document.body.classList.add('no-scroll'); // Add a class for potential fixed headers adjustment
+        }
+
+        // Function to unlock body scroll
+        function unlockBodyScroll() {
+            document.body.style.position = '';
+            document.body.style.top = '';
+            document.body.style.width = '';
+            document.body.style.overflowY = '';
+            document.body.style.paddingRight = '';
+            document.body.classList.remove('no-scroll'); // Remove the class
+            // Restore scroll position with requestAnimationFrame for smoothness
+            requestAnimationFrame(() => {
+                window.scrollTo(0, lastScrollY);
+            });
+        }
+
 
         images.forEach((image, index) => {
             image.addEventListener('click', () => {
+                lockBodyScroll(); // Lock scroll when modal opens
                 modal.style.display = 'flex';
                 modalImage.src = image.src;
                 modalImage.alt = image.alt;
@@ -1247,35 +1326,39 @@
             modalImage.alt = images[currentImageIndex].alt;
         };
 
-        prevButton.addEventListener('click', () => {
+        prevButton.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent modal click handler from firing
             currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
             updateModalImage();
         });
 
-        nextButton.addEventListener('click', () => {
+        nextButton.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent modal click handler from firing
             currentImageIndex = (currentImageIndex + 1) % images.length;
             updateModalImage();
         });
 
-        const resumeCarousel = () => {
+        closeModal.addEventListener('click', () => {
             modal.style.display = 'none';
+            unlockBodyScroll(); // Unlock scroll when modal closes
             carouselRows.forEach(row => {
+                // Restart animation by clearing and re-applying it
                 row.style.animation = 'none';
-                row.offsetHeight;
-                row.style.animation = 'slide 30s linear infinite';
-                if (row.classList.contains('top')) {
-                    row.style.animationDirection = 'normal';
-                } else if (row.classList.contains('bottom')) {
-                    row.style.animationDirection = 'reverse';
-                }
+                void row.offsetWidth; // Trigger reflow
+                row.style.animation = `slide 30s linear infinite ${row.classList.contains('top') ? 'normal' : 'reverse'}`;
             });
-        };
+        });
 
-        closeModal.addEventListener('click', resumeCarousel);
-
+        // Click outside modal to close
         modal.addEventListener('click', (e) => {
             if (e.target === modal) {
-                resumeCarousel();
+                modal.style.display = 'none';
+                unlockBodyScroll(); // Unlock scroll when modal closes
+                carouselRows.forEach(row => {
+                    row.style.animation = 'none';
+                    void row.offsetWidth; // Trigger reflow
+                    row.style.animation = `slide 30s linear infinite ${row.classList.contains('top') ? 'normal' : 'reverse'}`;
+                });
             }
         });
 
@@ -1284,8 +1367,12 @@
             question.addEventListener('click', () => {
                 const answer = question.nextElementSibling;
                 const isActive = question.classList.contains('active');
+
+                // Close all other FAQs
                 faqQuestions.forEach(q => q.classList.remove('active'));
                 document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('active'));
+
+                // Toggle current FAQ
                 if (!isActive) {
                     question.classList.add('active');
                     answer.classList.add('active');
