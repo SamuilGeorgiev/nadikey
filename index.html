@@ -17,7 +17,15 @@
             font-family: 'Open Sans', sans-serif;
             line-height: 1.6;
             color: #333;
-            background-color: #f0f0f0;
+            background: linear-gradient(135deg, #ffffff 33%, #00966e 33%, #00966e 66%, #ffffff 66%);
+            background-size: 100% 100%;
+            animation: bgFade 15s infinite ease-in-out;
+        }
+
+        @keyframes bgFade {
+            0% { background-position: 0% 0%; }
+            50% { background-position: 100% 100%; }
+            100% { background-position: 0% 0%; }
         }
 
         .navbar {
@@ -27,6 +35,7 @@
             z-index: 1000;
             padding: 5px 0;
             backdrop-filter: blur(5px);
+            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
         }
 
         .navbar .container {
@@ -42,41 +51,43 @@
             font-family: 'Roboto', sans-serif;
             font-size: 1.5em;
             font-weight: 700;
-            color: #fff;
+            color: #ffffff;
+            text-shadow: 0 0 5px #00966e;
         }
 
         .nav-menu {
             display: flex;
             align-items: center;
-            background-color: rgba(255, 255, 255, 0.9);
+            background: linear-gradient(90deg, #ffffff 0%, #00966e 100%);
             border-radius: 15px;
             padding: 2px 10px;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
         }
 
         .nav-menu a {
-            color: #2c3e50;
+            color: #ffffff;
             text-decoration: none;
             padding: 8px 12px;
             font-weight: 600;
-            transition: color 0.3s;
-            font-size: 0.9em;
+            transition: color 0.3s, text-shadow 0.3s;
         }
 
         .nav-menu a:hover {
-            color: #27ae60;
+            color: #333;
+            text-shadow: 0 0 8px #ffffff;
         }
 
         .hamburger {
             display: none;
             font-size: 1.5em;
-            color: #fff;
+            color: #ffffff;
             cursor: pointer;
             padding: 5px;
+            text-shadow: 0 0 5px #00966e;
         }
 
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('new-hero-background.jpg');
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('919.png');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -84,9 +95,10 @@
             display: flex;
             align-items: center;
             text-align: center;
-            color: #fff;
+            color: #ffffff;
             position: relative;
             overflow: hidden;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
         }
 
         .hero::before {
@@ -96,10 +108,16 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(45deg, #2c3e50, #27ae60);
-            opacity: 0.3;
-            animation: moveGradient 10s infinite linear;
+            background: linear-gradient(45deg, #ffffff, #00966e, #ffffff);
+            opacity: 0.2;
+            animation: heroGradient 10s infinite linear;
             z-index: 1;
+        }
+
+        @keyframes heroGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         .hero .key-anim {
@@ -110,6 +128,23 @@
             background-size: contain;
             animation: float 6s infinite ease-in-out;
             z-index: 2;
+            box-shadow: 0 0 10px #ffffff;
+        }
+
+        .hero .decorative-lock {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: url('lock-icon.png') no-repeat center;
+            background-size: contain;
+            animation: rotateLock 8s infinite linear;
+            opacity: 0.1;
+            z-index: 1;
+        }
+
+        @keyframes rotateLock {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         .hero-content {
@@ -118,30 +153,36 @@
             padding: 20px;
             position: relative;
             z-index: 3;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .hero h1 {
             font-family: 'Roboto', sans-serif;
             font-size: 3em;
             margin-bottom: 20px;
+            text-shadow: 0 0 10px #ffffff;
         }
 
         .hero p {
             font-size: 1.2em;
             margin-bottom: 30px;
+            text-shadow: 0 0 5px #ffffff;
         }
 
         .cta-button {
             display: inline-block;
             padding: 15px 30px;
-            background-color: #27ae60;
-            color: #fff;
+            background: linear-gradient(90deg, #00966e, #ffffff);
+            color: #333;
             text-decoration: none;
             border-radius: 5px;
             font-weight: 600;
             position: relative;
             overflow: hidden;
-            transition: background-color 0.3s, transform 0.2s;
+            transition: background 0.3s, transform 0.2s;
+            border: 2px solid #ffffff;
         }
 
         .cta-button::before {
@@ -151,23 +192,25 @@
             left: -2px;
             right: -2px;
             bottom: -2px;
-            background: linear-gradient(45deg, #ffffff, #00966e, #d62628, #ffffff);
+            background: linear-gradient(45deg, #ffffff, #00966e, #ffffff);
             background-size: 200% 200%;
             animation: neonRotate 3s infinite linear;
             z-index: -1;
             border-radius: 5px;
-            filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.7)) drop-shadow(0 0 10px #00966e) drop-shadow(0 0 15px #d62628);
+            opacity: 0.3;
         }
 
         .cta-button:hover {
-            background-color: #219653;
+            background: linear-gradient(90deg, #ffffff, #00966e);
             transform: scale(1.05);
         }
 
         .services {
             padding: 60px 20px;
-            background-color: #fff;
+            background: linear-gradient(135deg, #ffffff 50%, #f5f0d0 50%);
             text-align: center;
+            border-bottom: 2px solid rgba(0, 150, 110, 0.3);
+            position: relative;
         }
 
         .services h2 {
@@ -175,6 +218,20 @@
             font-size: 2.5em;
             margin-bottom: 40px;
             animation: slideInUp 1s ease-out;
+            color: #00966e;
+            text-shadow: 0 0 5px #ffffff;
+        }
+
+        .services::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 10%;
+            width: 50px;
+            height: 50px;
+            background: url('key-decor.png') no-repeat center;
+            background-size: contain;
+            opacity: 0.1;
         }
 
         .services-grid {
@@ -187,32 +244,38 @@
 
         .service-item {
             padding: 20px;
-            background-color: #ecf0f1;
+            background: linear-gradient(135deg, #ffffff, #f5f0d0);
+            border: 2px solid #00966e;
             border-radius: 10px;
             transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 0 5px #00966e, 0 0 10px rgba(0, 150, 110, 0.3);
         }
 
         .service-item:hover {
             transform: translateY(-10px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2), 0 0 8px #00966e;
         }
 
         .service-item i {
             font-size: 2.5em;
-            color: #27ae60;
+            color: #00966e;
             margin-bottom: 15px;
+            text-shadow: 0 0 5px #ffffff;
         }
 
         .service-item h3 {
             font-family: 'Roboto', sans-serif;
             font-size: 1.5em;
             margin-bottom: 10px;
+            color: #333;
         }
 
         .info-sections {
             padding: 60px 20px;
-            background-color: #f9f9f9;
+            background: linear-gradient(135deg, #f5f0d0 50%, #ffffff 50%);
             text-align: center;
+            border-bottom: 2px solid rgba(0, 150, 110, 0.3);
+            position: relative;
         }
 
         .info-sections h2 {
@@ -220,6 +283,20 @@
             font-size: 2.5em;
             margin-bottom: 40px;
             animation: slideInUp 1s ease-out;
+            color: #00966e;
+            text-shadow: 0 0 5px #ffffff;
+        }
+
+        .info-sections::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            right: 10%;
+            width: 50px;
+            height: 50px;
+            background: url('lock-decor.png') no-repeat center;
+            background-size: contain;
+            opacity: 0.1;
         }
 
         .info-grid {
@@ -231,40 +308,45 @@
         }
 
         .info-box {
-            background-color: #fff;
+            background: linear-gradient(135deg, #ffffff, #f5f0d0);
             padding: 20px;
+            border: 2px solid #00966e;
             border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 5px #00966e, 0 0 10px rgba(0, 150, 110, 0.3);
             transition: transform 0.3s;
             position: relative;
         }
 
         .info-box:hover {
             transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2), 0 0 8px #00966e;
         }
 
         .info-box i {
             font-size: 2em;
-            color: #27ae60;
+            color: #00966e;
             margin-bottom: 15px;
+            text-shadow: 0 0 5px #ffffff;
         }
 
         .info-box h3 {
             font-family: 'Roboto', sans-serif;
             font-size: 1.5em;
-            color: #2c3e50;
+            color: #333;
             margin-bottom: 10px;
         }
 
         .info-box p {
             font-size: 1em;
-            color: #7f8c8d;
+            color: #666;
         }
 
         .gallery {
             padding: 60px 20px;
-            background-color: #ecf0f1;
+            background: linear-gradient(135deg, #ffffff 50%, #f5f0d0 50%);
             text-align: center;
+            border-bottom: 2px solid rgba(0, 150, 110, 0.3);
+            position: relative;
         }
 
         .gallery h2 {
@@ -272,6 +354,32 @@
             font-size: 2.5em;
             margin-bottom: 40px;
             animation: slideInUp 1s ease-out;
+            color: #00966e;
+            text-shadow: 0 0 5px #ffffff;
+        }
+
+        .gallery::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 5%;
+            width: 60px;
+            height: 60px;
+            background: url('key-decor.png') no-repeat center;
+            background-size: contain;
+            opacity: 0.1;
+        }
+
+        .gallery::after {
+            content: '';
+            position: absolute;
+            bottom: 20px;
+            right: 5%;
+            width: 60px;
+            height: 60px;
+            background: url('lock-decor.png') no-repeat center;
+            background-size: contain;
+            opacity: 0.1;
         }
 
         .carousel-container {
@@ -285,6 +393,7 @@
             white-space: nowrap;
             animation: slide 30s linear infinite;
             touch-action: pan-x;
+            background: rgba(255, 255, 255, 0.1);
         }
 
         .carousel-row.top {
@@ -304,14 +413,15 @@
             width: 200px;
             margin: 10px;
             flex-shrink: 0;
+            border: 2px solid #00966e;
+            border-radius: 10px;
+            overflow: hidden;
         }
 
         .carousel-item img {
             width: 100%;
             height: 150px;
             object-fit: cover;
-            border-radius: 10px;
-            border: 3px solid #27ae60;
             transition: transform 0.3s, box-shadow 0.3s;
             display: block;
             cursor: pointer;
@@ -319,14 +429,15 @@
 
         .carousel-item img:hover {
             transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(39, 174, 96, 0.5);
+            box-shadow: 0 5px 15px rgba(0, 150, 110, 0.5);
         }
 
         .gallery-section-title {
             font-family: 'Roboto', sans-serif;
             font-size: 1.8em;
             margin: 20px 0 10px;
-            color: #2c3e50;
+            color: #00966e;
+            text-shadow: 0 0 5px #ffffff;
         }
 
         @keyframes slide {
@@ -336,8 +447,10 @@
 
         .about {
             padding: 60px 20px;
-            background-color: #fff;
+            background: linear-gradient(135deg, #f5f0d0 50%, #ffffff 50%);
             text-align: center;
+            border-bottom: 2px solid rgba(0, 150, 110, 0.3);
+            position: relative;
         }
 
         .about h2 {
@@ -345,12 +458,27 @@
             font-size: 2.5em;
             margin-bottom: 40px;
             animation: slideInUp 1s ease-out;
+            color: #00966e;
+            text-shadow: 0 0 5px #ffffff;
+        }
+
+        .about::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 10%;
+            width: 50px;
+            height: 50px;
+            background: url('lock-decor.png') no-repeat center;
+            background-size: contain;
+            opacity: 0.1;
         }
 
         .about p {
             max-width: 800px;
             margin: 0 auto;
             font-size: 1.1em;
+            color: #666;
         }
 
         .about-gallery {
@@ -365,19 +493,21 @@
             height: 200px;
             object-fit: cover;
             border-radius: 10px;
-            border: 3px solid #27ae60;
+            border: 2px solid #00966e;
             transition: transform 0.3s, box-shadow 0.3s;
         }
 
         .about-gallery img:hover {
             transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(39, 174, 96, 0.5);
+            box-shadow: 0 5px 15px rgba(0, 150, 110, 0.5);
         }
 
         .contact {
             padding: 60px 20px;
-            background-color: #f9f9f9;
+            background: linear-gradient(135deg, #ffffff 50%, #f5f0d0 50%);
             text-align: center;
+            border-bottom: 2px solid rgba(0, 150, 110, 0.3);
+            position: relative;
         }
 
         .contact h2 {
@@ -385,6 +515,20 @@
             font-size: 2.5em;
             margin-bottom: 40px;
             animation: slideInUp 1s ease-out;
+            color: #00966e;
+            text-shadow: 0 0 5px #ffffff;
+        }
+
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            right: 10%;
+            width: 50px;
+            height: 50px;
+            background: url('key-decor.png') no-repeat center;
+            background-size: contain;
+            opacity: 0.1;
         }
 
         .contact-info {
@@ -395,13 +539,14 @@
         }
 
         .contact-info a {
-            color: #27ae60;
+            color: #00966e;
             text-decoration: none;
-            transition: color 0.3s;
+            transition: color 0.3s, text-shadow 0.3s;
         }
 
         .contact-info a:hover {
-            color: #219653;
+            color: #333;
+            text-shadow: 0 0 8px #ffffff;
         }
 
         .working-hours-table {
@@ -409,24 +554,26 @@
             max-width: 500px;
             margin: 20px auto;
             border-collapse: collapse;
-            background-color: #fff;
+            background: linear-gradient(135deg, #ffffff, #f5f0d0);
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border: 2px solid #00966e;
         }
 
         .working-hours-table th,
         .working-hours-table td {
             padding: 12px;
             text-align: left;
-            border-bottom: 1px solid #ecf0f1;
+            border-bottom: 1px solid rgba(0, 150, 110, 0.3);
         }
 
         .working-hours-table th {
-            background-color: #2c3e50;
-            color: #fff;
+            background-color: #00966e;
+            color: #ffffff;
             font-family: 'Roboto', sans-serif;
             font-weight: 600;
+            text-shadow: 0 0 5px #ffffff;
         }
 
         .working-hours-table td {
@@ -443,38 +590,42 @@
         }
 
         .working-hours-table tr.regular td {
-            color: #27ae60; 
+            color: #00966e; 
         }
 
         .map-container {
             max-width: 800px;
             margin: 20px auto;
             height: 400px;
+            border: 2px solid #00966e;
+            border-radius: 10px;
+            overflow: hidden;
         }
 
         .map-container iframe {
             width: 100%;
             height: 100%;
             border: 0;
-            border-radius: 10px;
         }
 
         .back-to-top {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background-color: #2c3e50;
-            color: #fff;
+            background: linear-gradient(135deg, #00966e, #ffffff);
+            color: #333;
             padding: 10px 15px;
             border-radius: 50%;
             text-decoration: none;
             font-size: 1.2em;
             display: none;
-            transition: background-color 0.3s, transform 0.2s;
+            transition: background 0.3s, transform 0.2s;
+            border: 2px solid #ffffff;
+            box-shadow: 0 0 10px #ffffff;
         }
 
         .back-to-top:hover {
-            background-color: #34495e;
+            background: linear-gradient(135deg, #ffffff, #00966e);
             transform: scale(1.1);
         }
 
@@ -495,35 +646,41 @@
             max-width: 90%;
             max-height: 90vh;
             object-fit: contain;
+            border: 2px solid #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 15px #00966e;
         }
 
         .close {
             position: absolute;
             top: 20px;
             right: 20px;
-            color: #fff;
+            color: #ffffff;
             font-size: 2em;
             cursor: pointer;
             background: none;
             border: none;
+            text-shadow: 0 0 10px #00966e;
         }
 
         .nav-button {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background-color: rgba(255, 255, 255, 0.8);
-            border: none;
+            background: linear-gradient(135deg, #00966e, #ffffff);
+            border: 2px solid #ffffff;
             font-size: 2em;
-            color: #2c3e50;
+            color: #333;
             cursor: pointer;
             padding: 10px;
             border-radius: 50%;
-            transition: background-color 0.3s;
+            transition: background 0.3s, transform 0.2s;
+            box-shadow: 0 0 10px #ffffff;
         }
 
         .nav-button:hover {
-            background-color: rgba(255, 255, 255, 1);
+            background: linear-gradient(135deg, #ffffff, #00966e);
+            transform: scale(1.1);
         }
 
         .prev {
@@ -532,6 +689,86 @@
 
         .next {
             right: 20px;
+        }
+
+        .faq {
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #f5f0d0 50%, #ffffff 50%);
+            text-align: center;
+            border-bottom: 2px solid rgba(0, 150, 110, 0.3);
+            position: relative;
+        }
+
+        .faq h2 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 2.5em;
+            margin-bottom: 40px;
+            animation: slideInUp 1s ease-out;
+            color: #00966e;
+            text-shadow: 0 0 5px #ffffff;
+        }
+
+        .faq::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 10%;
+            width: 50px;
+            height: 50px;
+            background: url('key-decor.png') no-repeat center;
+            background-size: contain;
+            opacity: 0.1;
+        }
+
+        .faq-item {
+            max-width: 800px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, #ffffff, #f5f0d0);
+            border: 2px solid #00966e;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .faq-question {
+            padding: 15px 20px;
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #333;
+            cursor: pointer;
+            position: relative;
+            background: rgba(255, 255, 255, 0.9);
+            transition: background-color 0.3s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-shadow: 0 0 3px #ffffff;
+        }
+
+        .faq-question::after {
+            content: '\f107'; /* Font Awesome arrow down */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            transition: transform 0.3s;
+            color: #00966e;
+        }
+
+        .faq-question.active::after {
+            content: '\f106'; /* Font Awesome arrow up */
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            padding: 15px 20px;
+            font-size: 1em;
+            color: #666;
+            background: rgba(245, 240, 208, 0.8);
+            display: none;
+            text-align: left;
+        }
+
+        .faq-answer.active {
+            display: block;
         }
 
         @keyframes fadeIn {
@@ -579,7 +816,7 @@
                 position: absolute;
                 top: 40px;
                 left: 0;
-                background-color: rgba(255, 255, 255, 0.9);
+                background: linear-gradient(135deg, #00966e, #ffffff);
                 border-radius: 15px;
                 padding: 5px;
                 box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
@@ -596,6 +833,7 @@
                 text-align: center;
                 width: 100%;
                 font-size: 0.8em;
+                color: #ffffff;
             }
 
             .hero h1 {
@@ -604,6 +842,11 @@
 
             .hero p {
                 font-size: 1em;
+            }
+
+            .cta-button {
+                padding: 10px 20px;
+                font-size: 0.9em;
             }
 
             .carousel-item {
@@ -627,6 +870,18 @@
                 width: 200px;
                 height: 150px;
             }
+
+            .faq h2 {
+                font-size: 2em;
+            }
+
+            .faq-question {
+                font-size: 1em;
+            }
+
+            .faq-answer {
+                font-size: 0.9em;
+            }
         }
 
         @media (max-width: 480px) {
@@ -634,12 +889,16 @@
                 font-size: 1.5em;
             }
 
-            .cta-button {
-                padding: 10px 20px;
+            .hero p {
                 font-size: 0.9em;
             }
 
-            .services h2, .gallery h2, .about h2, .contact h2, .info-sections h2 {
+            .cta-button {
+                padding: 8px 16px;
+                font-size: 0.8em;
+            }
+
+            .services h2, .gallery h2, .about h2, .contact h2, .info-sections h2, .faq h2 {
                 font-size: 2em;
             }
 
@@ -665,6 +924,14 @@
                 width: 100%;
                 max-width: 250px;
                 height: auto;
+            }
+
+            .faq-question {
+                font-size: 0.9em;
+            }
+
+            .faq-answer {
+                font-size: 0.85em;
             }
         }
 
@@ -698,18 +965,19 @@
         </div>
     </nav>
 
-<section id="home" class="hero" style="background-image: url('919.png'); 
-background-size: cover; background-position: center;">
-    <div class="hero-content">
-        <h1>NadiKey - Вашият надежден ключар в Ямбол</h1>
-        <p>Доверен партньор за бързи и професионални ключарски услуги!</p>
-        <a href="#contact" class="cta-button">Свържете се с нас</a>
-    </div>
-    <div class="key-anim" style="left: 10%; top: 20%; animation-delay: 0s;"></div>
-    <div class="key-anim" style="left: 30%; top: 40%; animation-delay: 1s;"></div>
-    <div class="key-anim" style="left: 50%; top: 60%; animation-delay: 2s;"></div>
-    <div class="key-anim" style="left: 70%; top: 30%; animation-delay: 3s;"></div>
-</section>
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>NadiKey - Вашият надежден ключар в Ямбол</h1>
+            <p>Доверен партньор за бързи и професионални ключарски услуги!</p>
+            <a href="#contact" class="cta-button">Свържете се с нас</a>
+        </div>
+        <div class="key-anim" style="left: 10%; top: 20%; animation-delay: 0s;"></div>
+        <div class="key-anim" style="left: 30%; top: 40%; animation-delay: 1s;"></div>
+        <div class="key-anim" style="left: 50%; top: 60%; animation-delay: 2s;"></div>
+        <div class="key-anim" style="left: 70%; top: 30%; animation-delay: 3s;"></div>
+        <div class="decorative-lock" style="left: 15%; top: 30%;"></div>
+        <div class="decorative-lock" style="right: 15%; top: 50%;"></div>
+    </section>
 
     <section id="services" class="services">
         <h2>Нашите услуги</h2>
@@ -735,17 +1003,17 @@ background-size: cover; background-position: center;">
     <section id="info" class="info-sections">
         <h2>Защо да изберете нас</h2>
         <div class="info-grid">
-            <div class="info-box" style="background-color: #fff3e0;">
+            <div class="info-box">
                 <i class="fas fa-wrench"></i>
                 <h3>Широк набор от услуги</h3>
                 <p>От аварийно отваряне до изработка на ключове – ние сме готови да помогнем за дома, колата или офиса ви!</p>
             </div>
-            <div class="info-box" style="background-color: #e0f7fa;">
+            <div class="info-box">
                 <i class="fas fa-map-marker-alt"></i>
                 <h3>Удобно разположение в Ямбол</h3>
                 <p>Намираме се в центъра на Ямбол, леснодостъпни, и сме насреща, когато имате нужда от помощ.</p>
             </div>
-            <div class="info-box" style="background-color: #fffde7;">
+            <div class="info-box">
                 <i class="fas fa-phone"></i>
                 <h3>Винаги на разположение</h3>
                 <p>Не се колебайте да ни потърсите за вашите ключарски проблеми. Ние сме тук, за да ви осигурим бърза и ефективна помощ!</p>
@@ -758,40 +1026,69 @@ background-size: cover; background-position: center;">
         <div class="carousel-container">
             <h3 class="gallery-section-title">Авто услуги</h3>
             <div class="carousel-row top">
-                <div class="carousel-item" data-type="auto"><img src="333.jpg" alt="Auto Service 1"></div>
-                <div class="carousel-item" data-type="auto"><img src="444.jpg" alt="Auto Service 2"></div>
-                <div class="carousel-item" data-type="auto"><img src="555.jpg" alt="Auto Service 3"></div>
-                <div class="carousel-item" data-type="auto"><img src="111.jpg" alt="Auto Service 4"></div>
-                <div class="carousel-item" data-type="auto"><img src="47.jpg" alt="Auto Service 5"></div>
-                <div class="carousel-item" data-type="home"><img src="211.jpg" alt="Home Service 8"></div>
-                <div class="carousel-item" data-type="home"><img src="212.jpg" alt="Home Service 8"></div>
-                <div class="carousel-item" data-type="home"><img src="213.jpg" alt="Home Service 8"></div>
-
-            
+                <div class="carousel-item"><img src="333.jpg" alt="Auto Service 1"></div>
+                <div class="carousel-item"><img src="444.jpg" alt="Auto Service 2"></div>
+                <div class="carousel-item"><img src="555.jpg" alt="Auto Service 3"></div>
+                <div class="carousel-item"><img src="111.jpg" alt="Auto Service 4"></div>
+                <div class="carousel-item"><img src="47.jpg" alt="Auto Service 5"></div>
+                <div class="carousel-item"><img src="211.jpg" alt="Home Service 8"></div>
+                <div class="carousel-item"><img src="212.jpg" alt="Home Service 8"></div>
+                <div class="carousel-item"><img src="213.jpg" alt="Home Service 8"></div>
             </div>
             <h3 class="gallery-section-title">Домашни услуги</h3>
             <div class="carousel-row bottom">
-                <div class="carousel-item" data-type="home"><img src="13.jpg" alt="Home Service 1"></div>
-                <div class="carousel-item" data-type="home"><img src="12.jpg" alt="Home Service 2"></div>
-                <div class="carousel-item" data-type="home"><img src="14.jpg" alt="Home Service 3"></div>
-                <div class="carousel-item" data-type="home"><img src="22.jpg" alt="Home Service 4"></div>
-                <div class="carousel-item" data-type="home"><img src="23.jpg" alt="Home Service 5"></div>
-                <div class="carousel-item" data-type="home"><img src="24.jpg" alt="Home Service 6"></div>
-                <div class="carousel-item" data-type="home"><img src="25.jpg" alt="Home Service 7"></div>
-                <div class="carousel-item" data-type="home"><img src="26.jpg" alt="Home Service 8"></div>
-                <div class="carousel-item" data-type="home"><img src="27.jpg" alt="Home Service 8"></div>
-                <div class="carousel-item" data-type="home"><img src="28.jpg" alt="Home Service 8"></div>
-                <div class="carousel-item" data-type="home"><img src="29.jpg" alt="Home Service 8"></div>
-                
-                <div class="carousel-item" data-type="home"><img src="215.jpg" alt="Home Service 8"></div>
-                <div class="carousel-item" data-type="home"><img src="217.jpg" alt="Home Service 8"></div>
-                <div class="carousel-item" data-type="home"><img src="218.jpg" alt="Home Service 8"></div>
-                <div class="carousel-item" data-type="home"><img src="2199.jpg" alt="Home Service 8"></div>
-                <div class="carousel-item" data-type="home"><img src="66.jpg" alt="Home Service 8"></div>
-                <div class="carousel-item" data-type="home"><img src="93.jpg" alt="Home Service 8"></div>
-                <div class="carousel-item" data-type="home"><img src="99.jpg" alt="Home Service 8"></div>
-                <div class="carousel-item" data-type="home"><img src="123.jpg" alt="Home Service 8"></div>
+                <div class="carousel-item"><img src="13.jpg" alt="Home Service 1"></div>
+                <div class="carousel-item"><img src="12.jpg" alt="Home Service 2"></div>
+                <div class="carousel-item"><img src="14.jpg" alt="Home Service 3"></div>
+                <div class="carousel-item"><img src="22.jpg" alt="Home Service 4"></div>
+                <div class="carousel-item"><img src="23.jpg" alt="Home Service 5"></div>
+                <div class="carousel-item"><img src="24.jpg" alt="Home Service 6"></div>
+                <div class="carousel-item"><img src="25.jpg" alt="Home Service 7"></div>
+                <div class="carousel-item"><img src="26.jpg" alt="Home Service 8"></div>
+                <div class="carousel-item"><img src="27.jpg" alt="Home Service 8"></div>
+                <div class="carousel-item"><img src="28.jpg" alt="Home Service 8"></div>
+                <div class="carousel-item"><img src="29.jpg" alt="Home Service 8"></div>
+                <div class="carousel-item"><img src="215.jpg" alt="Home Service 8"></div>
+                <div class="carousel-item"><img src="217.jpg" alt="Home Service 8"></div>
+                <div class="carousel-item"><img src="218.jpg" alt="Home Service 8"></div>
+                <div class="carousel-item"><img src="2199.jpg" alt="Home Service 8"></div>
+                <div class="carousel-item"><img src="66.jpg" alt="Home Service 8"></div>
+                <div class="carousel-item"><img src="93.jpg" alt="Home Service 8"></div>
+                <div class="carousel-item"><img src="99.jpg" alt="Home Service 8"></div>
+                <div class="carousel-item"><img src="123.jpg" alt="Home Service 8"></div>
             </div>
+        </div>
+    </section>
+
+    <section id="faq" class="faq">
+        <h2>Често задавани въпроси (FAQ)</h2>
+        <div class="faq-item">
+            <div class="faq-question">Колко време отнема изработката на дубликат на ключ?</div>
+            <div class="faq-answer">Обикновено между 5 и 10 минути. Зависи от типа на ключа и натовареността в момента.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">Предлагате ли аварийно отключване на врати?</div>
+            <div class="faq-answer">Да, извършваме аварийни посещения при заключени входни врати, загубени ключове и повредени брави. Работим бързо и без щети.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">Можете ли да направите ключ по заключалка, ако нямам оригинала?</div>
+            <div class="faq-answer">В повечето случаи – да. Изработваме ключ по ключалка, но процесът отнема повече време и изисква оглед.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">Изработвате ли авто ключове с чип?</div>
+            <div class="faq-answer">Да, предлагаме дублиране на авто ключове с чип за много марки и модели. Свържи се с нас предварително, за да проверим дали можем да обслужим твоя автомобил.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">Какви видове ключове изработвате?</div>
+            <div class="faq-answer">Изработваме всички видове – обикновени, секретни, касови, патронни, специализирани ключове и автомобилни.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">Трябва ли да запиша час?</div>
+            <div class="faq-answer">Не е задължително. Можеш да дойдеш директно в ателието ни по време на работното време. За аварийни случаи – обади се по телефона.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">Колко струва дубликат на ключ?</div>
+            <div class="faq-answer">Цените започват от 5 лв. в зависимост от типа на ключа. Обади се или ела на място за точна цена.</div>
         </div>
     </section>
 
@@ -877,7 +1174,7 @@ background-size: cover; background-position: center;">
         });
 
         const animateOnScroll = () => {
-            const elements = document.querySelectorAll('.services, .gallery, .about, .contact, .info-sections');
+            const elements = document.querySelectorAll('.services, .gallery, .about, .contact, .info-sections, .faq');
             elements.forEach(element => {
                 const rect = element.getBoundingClientRect();
                 if (rect.top <= window.innerHeight * 0.8) {
@@ -980,6 +1277,20 @@ background-size: cover; background-position: center;">
             if (e.target === modal) {
                 resumeCarousel();
             }
+        });
+
+        const faqQuestions = document.querySelectorAll('.faq-question');
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const isActive = question.classList.contains('active');
+                faqQuestions.forEach(q => q.classList.remove('active'));
+                document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('active'));
+                if (!isActive) {
+                    question.classList.add('active');
+                    answer.classList.add('active');
+                }
+            });
         });
     </script>
 </body>
