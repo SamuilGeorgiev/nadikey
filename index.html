@@ -969,12 +969,29 @@
 
 
         
+        .logo-container {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+        .nav-logo {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
+            margin-right: 10px;
+        }
+        @media (max-width: 768px) {
+            .nav-logo {
+                height: 40px;
+            }
+        }
     </style>
 </head>
 <body>
     <nav class="navbar">
         <div class="container">
-            <h3 class="logo">NadiKey</h3>
+            <div class="logo-container"><img src="logo2122.png" alt="NadiKey Logo" class="nav-logo"></div>
+            <!--<h3 class="logo">NadiKey</h3>-->
             <div class="hamburger">
                 <i class="fas fa-bars"></i>
             </div>
@@ -1114,6 +1131,31 @@
             <div class="faq-question">Колко струва дубликат на ключ?</div>
             <div class="faq-answer">Цените започват от 5 лв. в зависимост от типа на ключа. Обади се или ела на място за точна цена.</div>
         </div>
+    
+    </section>
+
+    <section id="about" class="about">
+        <div class="section-header" style="text-align: center; margin-bottom: 30px;">
+            <h2 style="font-size: 2.5em; color: #000000; margin-bottom: 15px; text-shadow: 0 0 5px #ffffff; position: relative; display: inline-block;">
+                <span style="position: relative; z-index: 1; color: #000000; text-shadow: 0 0 5px #ffffff;">
+                    Какво казват нашите клиенти
+                </span>
+            </h2>
+            
+        <div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+            <!-- Elfsight Google Reviews | Untitled Google Reviews -->
+<script src="https://elfsightcdn.com/platform.js" async></script>
+<div class="elfsight-app-0bbdd644-285e-4f06-94fc-f4f4cbbe6e8b" data-elfsight-app-lazy></div>
+        </div>
+
+        <div style="background: #ffffff; padding: 25px; margin: 35px auto; max-width: 800px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); position: relative; text-align: center;">
+            <p style="font-size: 1.2em; color: #333; line-height: 1.6; margin: 0; font-weight: 700; text-align: center; position: relative; z-index: 1;">
+                <i class="fas fa-star" style="color: #ffc107; margin-right: 10px;"></i>
+                Вашето мнение е ценно за нас! Отделете минутка, за да оставите оценка или коментар, за да можем да подобряваме услугите си.
+                <i class="fas fa-star" style="color: #ffc107; margin-left: 10px;"></i>
+            </p>
+            </div>
+        
     </section>
 
     <section id="about" class="about">
