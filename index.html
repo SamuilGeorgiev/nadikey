@@ -103,7 +103,7 @@
         .hero {
             background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('919.png');
             min-height: 500px;
-            height: 75vh;
+            height: 111vh;
             padding: 60px 20px;
             background-size: cover;
             background-position: center;
@@ -1233,9 +1233,9 @@
             }
             @media (max-width: 768px) {
                 .hero {
-                    min-height: 400px;
-                    height: auto;
-                    padding: 30px 15px 50px;
+                    min-height: 700px;  /* more height on small screens */
+                    height: 115vh;      /* take a bit more than full screen */
+                    padding: 40px 15px 60px;  /* Slightly increased padding */
                     display: flex;
                     align-items: center;
                 }
@@ -1251,8 +1251,8 @@
                     justify-content: center;
                 }
                 .hero-image {
-                    width: 35px;
-                    height: 65px;
+                    width: 65px;
+                    height: 95px;
                     flex-shrink: 0;
                     object-fit: cover;
                     border-radius: 4px;
