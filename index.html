@@ -523,7 +523,107 @@
 
         .about-gallery img:hover {
             transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(0, 150, 110, 0.5);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .certificates-section {
+            margin-top: 40px;
+            padding: 40px 20px 0;
+        }
+
+        .certificates-section h2 {
+            margin-bottom: 30px;
+        }
+
+        .certificate-slider {
+            max-width: 1000px;
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .certificate-slide {
+            display: none;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .certificate-slide.active {
+            display: flex;
+        }
+
+        .certificate-text {
+            flex: 1.5;
+            text-align: left;
+            font-size: 1.05em;
+            color: #000;
+        }
+
+        .certificate-text p {
+            margin-bottom: 15px;
+        }
+
+        .certificate-meta {
+            font-size: 0.95em;
+            font-style: italic;
+            color: #333;
+        }
+
+        .certificate-image {
+            flex: 1;
+            text-align: right;
+        }
+
+        .certificate-image img {
+            max-width: 260px;
+            height: auto;
+            border-radius: 10px;
+            border: 2px solid #00966e;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            cursor: pointer;
+        }
+
+        .certificate-dots {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .cert-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            border: none;
+            background-color: rgba(0,0,0,0.2);
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .cert-dot.active {
+            background-color: #ffffff;
+            transform: scale(1.2);
+            box-shadow: 0 0 5px #ffffff;
+        }
+
+        @media (max-width: 768px) {
+            .certificate-slide {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .certificate-text {
+                text-align: center;
+            }
+
+            .certificate-image {
+                text-align: center;
+            }
+
+            .certificate-image img {
+                max-width: 220px;
+            }
         }
 
         .contact {
@@ -571,6 +671,38 @@
         .contact-info a:hover {
             color: #333;
             text-shadow: 0 0 8px #ffffff;
+        }
+
+        .social-links {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #00966e, #ffffff);
+            color: #333;
+            border: 2px solid #ffffff;
+            text-decoration: none;
+            box-shadow: 0 0 8px rgba(0,0,0,0.2);
+            transition: transform 0.2s, box-shadow 0.2s, background 0.3s;
+        }
+
+        .social-link:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 12px rgba(0,0,0,0.3);
+            background: linear-gradient(135deg, #ffffff, #00966e);
+        }
+
+        .social-link i {
+            font-size: 1.2em;
         }
 
         .working-hours-table {
@@ -1190,75 +1322,45 @@
             <img src="z2.jpg" alt="Ателие отпред 1">
             <img src="z3.jpg" alt="Ателие отпред 2">
         </div>
-        <h2>Сертификати</h2>
-        <div class="hero-images">
-                <div class="hero-image-container">
-                    <img src="1000025282.jpg" alt="Ключарски услуги 1" class="hero-image">
+        
+        <section id="certificates" class="certificates-section">
+            <h2>Сертификати</h2>
+            <div class="certificate-slider">
+                <div class="certificate-slide active">
+                    <div class="certificate-text">
+                        <p>
+                            Удостоверение за членство в Сдружението на автомобилните ключари в България,
+                            издадено на "Надин-2014" ЕООД / Надежда Иванова, като <strong>легитимен и доказан
+                            професионален автомобилен ключар</strong>, спазващ Устава и Етичния кодекс на Сдружението.
+                        </p>
+                        <p class="certificate-meta">Сдружение на автомобилните ключари в България · валидно до 22.02.2026 г.</p>
+                    </div>
+                    <div class="certificate-image">
+                        <img src="1000025282.jpg" alt="Удостоверение за членство в Сдружението на автомобилните ключари в България" class="hero-image">
+                    </div>
                 </div>
-                <div class="hero-image-container">
-                    <img src="1000025283.jpg" alt="Ключарски услуги 2" class="hero-image">
+
+                <div class="certificate-slide">
+                    <div class="certificate-text">
+                        <p>
+                            Удостоверение от Националната асоциация на ключарите, което потвърждава, че
+                            <strong>Надежда Стойкова Иванова е регистриран и правоспособен ключар</strong>,
+                            пълноправен член на Асоциацията, спазващ нейния Устав и Етичен кодекс и
+                            имащ право да извършва всички видове ключарски услуги.
+                        </p>
+                        <p class="certificate-meta">Национална асоциация на ключарите · валидно до 03.01.2027 г.</p>
+                    </div>
+                    <div class="certificate-image">
+                        <img src="1000025283.jpg" alt="Удостоверение от Националната асоциация на ключарите" class="hero-image">
+                    </div>
                 </div>
             </div>
-        </div>
-        <style>
-            .hero-images {
-                display: flex;
-                justify-content: center;
-                margin: 60px 0 40px;
-                gap: 20px;
-                padding-top: 20px;
-                flex-wrap: nowrap;
-                overflow-x: auto;
-                padding-bottom: 10px;
-                -webkit-overflow-scrolling: touch;
-            }
-            .hero-image-container {
-                position: relative;
-                display: inline-block;
-                overflow: hidden;
-                border-radius: 10px;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            }
-            .hero-image {
-                width: 180px;  /* Reduced from 200px */
-                height: 225px;  /* Reduced from 250px */
-                object-fit: cover;
-                display: block;
-                transition: transform 0.3s ease;
-                cursor: pointer;
-            }
-            /* Navigation arrows are now only in the modal */
-            .hero-image:hover {
-                transform: scale(1.05);
-            }
-            @media (max-width: 768px) {
-                .hero {
-                    min-height: 700px;  /* more height on small screens */
-                    height: 115vh;      /* take a bit more than full screen */
-                    padding: 40px 15px 60px;  /* Slightly increased padding */
-                    display: flex;
-                    align-items: center;
-                }
-                .hero-content {
-                    margin-top: 20px;
-                    padding-bottom: 20px;
-                }
-                .hero-images {
-                    gap: 10px;
-                    margin-top: 70px;
-                    padding: 15px 10px 20px;
-                    align-items: center;
-                    justify-content: center;
-                }
-                .hero-image {
-                    width: 65px;
-                    height: 95px;
-                    flex-shrink: 0;
-                    object-fit: cover;
-                    border-radius: 4px;
-                }
-            }
-        </style>
+
+            <div class="certificate-dots">
+                <button class="cert-dot active" data-index="0" aria-label="Сертификат 1"></button>
+                <button class="cert-dot" data-index="1" aria-label="Сертификат 2"></button>
+            </div>
+        </section>
     </section>
 
     <section id="contact" class="contact">
@@ -1267,6 +1369,11 @@
             <p><strong >Адрес:</strong> ул. "Цар Иван Александър" 5, Ямбол</p>
             <p><strong class="123">Телефон:</strong> <a href="tel:0878101524">087 810 1524</a></p>
             <p><strong>Имейл:</strong> <a href="mailto:key1yambol@gmail.com">key1yambol@gmail.com</a></p>
+            <div class="social-links">
+                <a class="social-link" href="https://www.facebook.com/p/NadiKey-61565386973024/" target="_blank" rel="noopener noreferrer" aria-label="Facebook страница на NadiKey">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+            </div>
             <table class="working-hours-table">
                 <tr>
                     <th>Ден</th>
@@ -1517,6 +1624,46 @@
                 }
             });
         });
+
+        // Certificates slider
+        const certSlides = document.querySelectorAll('.certificate-slide');
+        const certDots = document.querySelectorAll('.cert-dot');
+        let currentCertIndex = 0;
+        let certTimer;
+
+        function showCertificate(index) {
+            certSlides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === index);
+            });
+            certDots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+            currentCertIndex = index;
+        }
+
+        function nextCertificate() {
+            const next = (currentCertIndex + 1) % certSlides.length;
+            showCertificate(next);
+        }
+
+        function startCertAutoPlay() {
+            if (certSlides.length <= 1) return;
+            clearInterval(certTimer);
+            certTimer = setInterval(nextCertificate, 7000); // 7 seconds
+        }
+
+        certDots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                const index = parseInt(dot.getAttribute('data-index'), 10);
+                showCertificate(index);
+                startCertAutoPlay();
+            });
+        });
+
+        if (certSlides.length > 0) {
+            showCertificate(0);
+            startCertAutoPlay();
+        }
     </script>
 </body>
 </html>
