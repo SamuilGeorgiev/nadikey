@@ -1129,6 +1129,21 @@
             .faq-answer {
                 font-size: 0.9em;
             }
+            /* Reduce heavy animations on tablets/phones */
+            body {
+                animation: none;
+            }
+
+            .hero::before,
+            .key-anim,
+            .decorative-lock {
+                animation: none;
+            }
+
+            /* Disable automatic carousel animation on smaller screens, keep swipe */
+            .carousel-row {
+                animation: none;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1179,6 +1194,10 @@
 
             .faq-answer {
                 font-size: 0.85em;
+            }
+            /* Extra safety: no automatic carousel animation on small phones */
+            .carousel-row {
+                animation: none;
             }
         }
 
@@ -1294,36 +1313,36 @@
         <div class="carousel-container">
             <h3 class="gallery-section-title">Авто услуги</h3>
             <div class="carousel-row top">
-                <div class="carousel-item"><img src="333.jpg" alt="Auto Service 1"></div>
-                <div class="carousel-item"><img src="444.jpg" alt="Auto Service 2"></div>
-                <div class="carousel-item"><img src="555.jpg" alt="Auto Service 3"></div>
-                <div class="carousel-item"><img src="111.jpg" alt="Auto Service 4"></div>
-                <div class="carousel-item"><img src="47.jpg" alt="Auto Service 5"></div>
-                <div class="carousel-item"><img src="211.jpg" alt="Home Service 8"></div>
-                <div class="carousel-item"><img src="212.jpg" alt="Home Service 8"></div>
-                <div class="carousel-item"><img src="213.jpg" alt="Home Service 8"></div>
+                <div class="carousel-item"><img src="333.jpg" alt="Auto Service 1" loading="lazy"></div>
+                <div class="carousel-item"><img src="444.jpg" alt="Auto Service 2" loading="lazy"></div>
+                <div class="carousel-item"><img src="555.jpg" alt="Auto Service 3" loading="lazy"></div>
+                <div class="carousel-item"><img src="111.jpg" alt="Auto Service 4" loading="lazy"></div>
+                <div class="carousel-item"><img src="47.jpg" alt="Auto Service 5" loading="lazy"></div>
+                <div class="carousel-item"><img src="211.jpg" alt="Home Service 8" loading="lazy"></div>
+                <div class="carousel-item"><img src="212.jpg" alt="Home Service 8" loading="lazy"></div>
+                <div class="carousel-item"><img src="213.jpg" alt="Home Service 8" loading="lazy"></div>
             </div>
             <h3 class="gallery-section-title">Домашни услуги</h3>
             <div class="carousel-row bottom">
-                <div class="carousel-item"><img src="13.jpg" alt="Home Service 1"></div>
-                <div class="carousel-item"><img src="12.jpg" alt="Home Service 2"></div>
-                <div class="carousel-item"><img src="14.jpg" alt="Home Service 3"></div>
-                <div class="carousel-item"><img src="22.jpg" alt="Home Service 4"></div>
-                <div class="carousel-item"><img src="23.jpg" alt="Home Service 5"></div>
-                <div class="carousel-item"><img src="24.jpg" alt="Home Service 6"></div>
-                <div class="carousel-item"><img src="25.jpg" alt="Home Service 7"></div>
-                <div class="carousel-item"><img src="26.jpg" alt="Home Service 8"></div>
-                <div class="carousel-item"><img src="27.jpg" alt="Home Service 8"></div>
-                <div class="carousel-item"><img src="28.jpg" alt="Home Service 8"></div>
-                <div class="carousel-item"><img src="29.jpg" alt="Home Service 8"></div>
-                <div class="carousel-item"><img src="215.jpg" alt="Home Service 8"></div>
-                <div class="carousel-item"><img src="217.jpg" alt="Home Service 8"></div>
-                <div class="carousel-item"><img src="218.jpg" alt="Home Service 8"></div>
-                <div class="carousel-item"><img src="2199.jpg" alt="Home Service 8"></div>
-                <div class="carousel-item"><img src="66.jpg" alt="Home Service 8"></div>
-                <div class="carousel-item"><img src="93.jpg" alt="Home Service 8"></div>
-                <div class="carousel-item"><img src="99.jpg" alt="Home Service 8"></div>
-                <div class="carousel-item"><img src="123.jpg" alt="Home Service 8"></div>
+                <div class="carousel-item"><img src="13.jpg" alt="Home Service 1" loading="lazy"></div>
+                <div class="carousel-item"><img src="12.jpg" alt="Home Service 2" loading="lazy"></div>
+                <div class="carousel-item"><img src="14.jpg" alt="Home Service 3" loading="lazy"></div>
+                <div class="carousel-item"><img src="22.jpg" alt="Home Service 4" loading="lazy"></div>
+                <div class="carousel-item"><img src="23.jpg" alt="Home Service 5" loading="lazy"></div>
+                <div class="carousel-item"><img src="24.jpg" alt="Home Service 6" loading="lazy"></div>
+                <div class="carousel-item"><img src="25.jpg" alt="Home Service 7" loading="lazy"></div>
+                <div class="carousel-item"><img src="26.jpg" alt="Home Service 8" loading="lazy"></div>
+                <div class="carousel-item"><img src="27.jpg" alt="Home Service 8" loading="lazy"></div>
+                <div class="carousel-item"><img src="28.jpg" alt="Home Service 8" loading="lazy"></div>
+                <div class="carousel-item"><img src="29.jpg" alt="Home Service 8" loading="lazy"></div>
+                <div class="carousel-item"><img src="215.jpg" alt="Home Service 8" loading="lazy"></div>
+                <div class="carousel-item"><img src="217.jpg" alt="Home Service 8" loading="lazy"></div>
+                <div class="carousel-item"><img src="218.jpg" alt="Home Service 8" loading="lazy"></div>
+                <div class="carousel-item"><img src="2199.jpg" alt="Home Service 8" loading="lazy"></div>
+                <div class="carousel-item"><img src="66.jpg" alt="Home Service 8" loading="lazy"></div>
+                <div class="carousel-item"><img src="93.jpg" alt="Home Service 8" loading="lazy"></div>
+                <div class="carousel-item"><img src="99.jpg" alt="Home Service 8" loading="lazy"></div>
+                <div class="carousel-item"><img src="123.jpg" alt="Home Service 8" loading="lazy"></div>
             </div>
         </div>
     </section>
@@ -1389,8 +1408,8 @@
         <h2>За нас</h2>
         <p>NadiKey е ключарска фирма, базирана в Ямбол. Предлагаме качествени ключарски услуги, които отговарят на нуждите на нашите клиенти. Нашият екип е опитен и способен да се справи с различни задачи – от аварийни случаи до работа с автомобилни ключове.</p>
         <div class="about-gallery">
-            <img src="z2.jpg" alt="Ателие отпред 1">
-            <img src="z3.jpg" alt="Ателие отпред 2">
+            <img src="z2.jpg" alt="Ателие отпред 1" loading="lazy">
+            <img src="z3.jpg" alt="Ателие отпред 2" loading="lazy">
         </div>
         
         <section id="certificates" class="certificates-section">
@@ -1406,7 +1425,7 @@
                         <p class="certificate-meta">Сдружение на автомобилните ключари в България · валидно до 22.02.2026 г.</p>
                     </div>
                     <div class="certificate-image">
-                        <img src="1000025282.jpg" alt="Удостоверение за членство в Сдружението на автомобилните ключари в България" class="hero-image">
+                        <img src="1000025282.jpg" alt="Удостоверение за членство в Сдружението на автомобилните ключари в България" class="hero-image" loading="lazy">
                     </div>
                 </div>
 
@@ -1421,7 +1440,7 @@
                         <p class="certificate-meta">Национална асоциация на ключарите · валидно до 03.01.2027 г.</p>
                     </div>
                     <div class="certificate-image">
-                        <img src="1000025283.jpg" alt="Удостоверение от Националната асоциация на ключарите" class="hero-image">
+                        <img src="1000025283.jpg" alt="Удостоверение от Националната асоциация на ключарите" class="hero-image" loading="lazy">
                     </div>
                 </div>
             </div>
@@ -1532,16 +1551,31 @@
             });
         });
 
+        const animatedSections = document.querySelectorAll('.services, .gallery, .about, .contact, .info-sections, .faq');
+        let remainingToAnimate = animatedSections.length;
+
         const animateOnScroll = () => {
-            const elements = document.querySelectorAll('.services, .gallery, .about, .contact, .info-sections, .faq');
-            elements.forEach(element => {
+            if (remainingToAnimate <= 0) {
+                window.removeEventListener('scroll', animateOnScroll);
+                return;
+            }
+
+            animatedSections.forEach(element => {
+                if (element.dataset.animated === 'true') return;
+
                 const rect = element.getBoundingClientRect();
                 // Only animate if the element is not already visible and within the viewport
                 if (rect.top <= window.innerHeight * 0.8 && element.style.opacity !== '1') {
                     element.style.opacity = '1';
                     element.style.transform = 'translateY(0)';
+                    element.dataset.animated = 'true';
+                    remainingToAnimate--;
                 }
             });
+
+            if (remainingToAnimate <= 0) {
+                window.removeEventListener('scroll', animateOnScroll);
+            }
         };
 
         window.addEventListener('scroll', animateOnScroll);
