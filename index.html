@@ -864,25 +864,26 @@
 
         .partners-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
             max-width: 1100px;
             margin: 0 auto;
             padding: 0 20px;
+            align-items: center;
         }
 
         .partner-item {
-            background: rgba(255, 255, 255, 0.9);
-            border: 2px solid #00966e;
-            border-radius: 15px;
-            padding: 20px;
+            background: transparent;
+            border: none;
+            border-radius: 0;
+            padding: 10px;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 15px rgba(0, 150, 110, 0.1);
+            box-shadow: none;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: 180px;
+            min-height: auto;
             cursor: pointer;
             text-decoration: none;
         }
@@ -892,23 +893,27 @@
         }
 
         .partner-item:hover:not(.no-link) {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 30px rgba(0, 150, 110, 0.25);
-            background: #ffffff;
-            border-color: #ff0000;
+            transform: translateY(-5px) scale(1.05);
+            background: transparent;
         }
 
         .partner-item.no-link:hover {
             transform: none;
-            box-shadow: 0 4px 15px rgba(0, 150, 110, 0.1);
-            border-color: #00966e;
+            background: transparent;
         }
 
         .partner-img {
-            max-width: 160px;
-            height: 110px;
+            max-width: 180px;
+            height: 120px;
             object-fit: contain;
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .partner-item:hover:not(.no-link) .partner-img {
+            filter: drop-shadow(0 8px 15px rgba(0,0,0,0.2));
         }
 
         .partner-item:hover .partner-img {
@@ -926,15 +931,12 @@
 
         @media (max-width: 768px) {
             .partners-grid {
-                grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
                 gap: 15px;
             }
             .partner-img {
-                max-width: 100px;
-                height: 70px;
-            }
-            .partner-name {
-                font-size: 0.85em;
+                max-width: 150px;
+                height: 100px;
             }
         }
 
