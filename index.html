@@ -863,65 +863,80 @@
         }
 
         .partners-grid {
-            display: flex;
-            justify-content: center;
-            max-width: 800px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            max-width: 1100px;
             margin: 0 auto;
+            padding: 0 20px;
         }
 
         .partner-item {
-            background: linear-gradient(135deg, #ffffff, #f5f0d0);
+            background: rgba(255, 255, 255, 0.9);
             border: 2px solid #00966e;
             border-radius: 15px;
-            padding: 30px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 150, 110, 0.2);
+            padding: 20px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 15px rgba(0, 150, 110, 0.1);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-width: 300px;
+            min-height: 180px;
             cursor: pointer;
             text-decoration: none;
         }
 
-        .partner-item:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 10px 25px rgba(0, 150, 110, 0.4);
-            background: linear-gradient(135deg, #f5f0d0, #ffffff);
+        .partner-item.no-link {
+            cursor: default;
+        }
+
+        .partner-item:hover:not(.no-link) {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0, 150, 110, 0.25);
+            background: #ffffff;
             border-color: #ff0000;
         }
 
-        .partner-item a {
-            text-decoration: none;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
+        .partner-item.no-link:hover {
+            transform: none;
+            box-shadow: 0 4px 15px rgba(0, 150, 110, 0.1);
+            border-color: #00966e;
         }
 
-        .partner-logo {
-            font-size: 3em;
-            color: #00966e;
-            font-weight: 800;
-            font-family: 'Roboto', sans-serif;
-            line-height: 1;
+        .partner-img {
+            max-width: 130px;
+            height: 90px;
+            object-fit: contain;
             margin-bottom: 15px;
-            transition: color 0.3s ease;
+            transition: transform 0.3s ease;
         }
 
-        .partner-item:hover .partner-logo {
-            color: #ff0000;
+        .partner-item:hover .partner-img {
+            transform: scale(1.08);
         }
 
         .partner-name {
             font-family: 'Roboto', sans-serif;
-            font-size: 1.2em;
+            font-size: 0.95em;
             color: #333;
             font-weight: 700;
             text-align: center;
-            line-height: 1.4;
+            line-height: 1.3;
+        }
+
+        @media (max-width: 768px) {
+            .partners-grid {
+                grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+                gap: 15px;
+            }
+            .partner-img {
+                max-width: 100px;
+                height: 70px;
+            }
+            .partner-name {
+                font-size: 0.85em;
+            }
         }
 
         @media (max-width: 768px) {
@@ -1516,14 +1531,28 @@
         </div>
         
         <section id="partners" class="partners">
-            <h2>Партньори</h2>
+            <h2>Нашите партньори</h2>
             <div class="partners-grid">
-                <a href="https://nak-bg.com/employees/%D0%BD%D0%B0%D0%B4%D0%B5%D0%B6%D0%B4%D0%B0-%D0%B8%D0%B2%D0%B0%D0%BD%D0%BE%D0%B2%D0%B0/" target="_blank" rel="noopener noreferrer" class="partner-item">
-                    <div class="partner-logo">НАК</div>
-                    <div class="partner-name">
-                        Национална Асоциация на Ключарите
-                    </div>
-                </a>
+                <!-- НАК -->
+                <div class="partner-item" onclick="window.open('https://nak-bg.com/employees/%D0%BD%D0%B0%D0%B4%D0%B5%D0%B6%D0%B4%D0%B0-%D0%B8%D0%B2%D0%B0%D0%BD%D0%BE%D0%B2%D0%B0/', '_blank')">
+                    <img src="nak logo.jpg" alt="НАК - Национална Асоциация на Ключарите" class="partner-img">
+                    <div class="partner-name">НАК - Национална Асоциация на Ключарите</div>
+                </div>
+                <!-- SNBA -->
+                <div class="partner-item no-link">
+                    <img src="snba1.jpg" alt="СНБА" class="partner-img">
+                    <div class="partner-name">СНБА - Съюз на независимите български автоключари</div>
+                </div>
+                <!-- ABIKCVB -->
+                <div class="partner-item no-link">
+                    <img src="abikcvb.jpg" alt="АБИКЦВБ" class="partner-img">
+                    <div class="partner-name">АБИКЦВБ - Асоциация на българските изработващи ключове</div>
+                </div>
+                <!-- ALB -->
+                <div class="partner-item no-link">
+                    <img src="alb1.jpg" alt="АЛБ" class="partner-img">
+                    <div class="partner-name">АЛБ - Асоциация на лицензираните браварски ателиета</div>
+                </div>
             </div>
         </section>
 
