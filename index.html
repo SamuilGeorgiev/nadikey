@@ -2014,7 +2014,7 @@
         function startCertAutoPlay() {
             if (certSlides.length <= 1) return;
             clearInterval(certTimer);
-            certTimer = setInterval(nextCertificate, 7000); // 7 seconds
+            certTimer = setInterval(nextCertificate, 1000); // 1 seconds
         }
 
         certDots.forEach(dot => {
